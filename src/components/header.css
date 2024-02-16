@@ -1,0 +1,35 @@
+.header {
+  display: flex;
+  justify-content: space-evenly;
+  border: 1px solid #535050;
+  background-color: #808694;
+  height: 100px;
+}
+
+.logo-container {
+  width: 130px;
+}
+
+.logo {
+  width: 100%;
+}
+.nav-items{
+    margin: auto;
+}
+
+.nav-items > ul > li {
+    list-style-type: none;
+    margin: 0 15px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.nav-items > ul {
+    display: flex;
+    padding: 10px;
+}
+
+.name{
+    color: azure;
+    margin: auto;
+}
