@@ -1,8 +1,8 @@
 # Introduction
 
-This is a simple weather App built on the OpenWeather APIs,the main goal of this project is understand API calls in much better way.
+Forecastengine is a simple weather app that lets user to check the temperature of the entered city. I've utilised OpenWeather's API for my project.
 
 # Work
 
-I've used two API from OpenWeather the first API converts the text,the user enter into longitudinal values and the
-second API is used to get the weather of the place enterd by the user.
+I've used two APIs from OpenWeather for this project.The purpose of first API is to get latitude and longitude of the city entered by user
+which is used by the second API to get the temperature. 

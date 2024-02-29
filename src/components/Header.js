@@ -2,24 +2,15 @@ import "./header.css";
 
 const Header = () => {
   return (
-    <div className="header">
-      <div className="logo-container">
+    <div className="p-3 flex items-center">
+      <div>
         <img
-          className="logo"
+          className="w-24 m-3"
           alt="logo"
-          src="https://i.pinimg.com/736x/4d/2c/73/4d2c73d8d33f2a7b4fa9ae44668e66e9.jpg"
-        />
+          src="https://cdn-icons-png.flaticon.com/512/4052/4052984.png"/>
       </div>
-      <div className="name">
-        <h1>DpkWeatherApp</h1>
-      </div>
-
-      <div className="nav-items">
-        <ul>
-          <li>Home</li>
-          <li>Search</li>
-          <li>About</li>
-        </ul>
+      <div className="font-bold text-6xl p-3">
+        <h1>Forecast<span className="text-white">engine</span></h1>
       </div>
     </div>
   );

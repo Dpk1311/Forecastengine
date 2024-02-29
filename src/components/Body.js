@@ -1,16 +1,17 @@
 import "./body.css";
-import { useEffect, useRef, useState } from "react";
-import MockData from "./MockData";
+import { useRef, useState } from "react";
 import Temperature from "./Temperature";
 import { API_KEY } from "../utils/constants";
 
 const Body = () => {
   const [Temp, setTemp] = useState(null);
-  const [cityName,setCityName] = useState(null)
+  const [cityName, setCityName] = useState(null);
+  const [errMsg, setErrMsg] = useState();
   //  console.log(Data);
   const name = useRef(null);
   const handleClick = () => {
     // console.log(name.current.value);
+    setCityName(null);
     const city = name.current.value;
     cityApi(city);
   };
@@ -23,9 +24,14 @@ const Body = () => {
         API_KEY
     );
     const json = await data.json();
-    console.log("cityname",json);
-    setCityName(json[0].name)
-    weatherApi(json);
+    if (json.length) {
+      console.log("cityname", json);
+      setCityName(json[0].name);
+      weatherApi(json);
+      setErrMsg("");
+    } else {
+      setErrMsg("No Data Found");
+    }
   };
   const weatherApi = async (cordinates) => {
     if (cordinates === null) return;
@@ -44,16 +50,27 @@ const Body = () => {
 
   return (
     <div className="body">
-      <div className="welcome-text">
-        <h1>Welcome To DpkWeatherApp</h1>
+      <div className="welcome-text flex justify-center m-5">
+        <h1 className="w-8/12 font-medium">
+          Welcome to Forecastengine, your ultimate destination for up-to-date
+          weather information.
+        </h1>
       </div>
-      <p>Get the latest Temperature Info of your City</p>
-      <input ref={name} type="text"></input>
-      <button className="search-btn" onClick={handleClick}>
+      <input
+        className=" border-style:solid w-64 rounded-lg m-3 h-9 px-3"
+        placeholder="Enter your city"
+        ref={name}
+        type="text"
+      ></input>
+      <button
+        className="bg-black text-gray-400 rounded-lg w-16 h-8"
+        onClick={handleClick}
+      >
         Search
       </button>
 
-      <Temperature cityName={cityName}  cityData={Temp} />
+      <Temperature cityName={cityName} cityData={Temp} />
+      <p className="font-medium text-xl m-6">{errMsg}</p>
     </div>
   );
 };
