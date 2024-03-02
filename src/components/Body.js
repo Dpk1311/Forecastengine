@@ -1,4 +1,3 @@
-import "./body.css";
 import { useRef, useState } from "react";
 import Temperature from "./Temperature";
 import { API_KEY } from "../utils/constants";
@@ -50,8 +49,8 @@ const Body = () => {
 
   return (
     <div className="body">
-      <div className="welcome-text flex justify-center m-5">
-        <h1 className="w-8/12 font-medium">
+      <div className="welcome-text flex justify-center md:m-5 m-7">
+        <h1 className="md:w-8/12 md:font-medium font-semibold text-2xl  md:text-4xl">
           Welcome to Forecastengine, your ultimate destination for up-to-date
           weather information.
         </h1>
@@ -63,7 +62,7 @@ const Body = () => {
         type="text"
       ></input>
       <button
-        className="bg-black text-gray-400 rounded-lg w-16 h-8"
+        className="bg-black text-gray-400 rounded-lg w-16 md:h-8 h-9"
         onClick={handleClick}
       >
         Search
