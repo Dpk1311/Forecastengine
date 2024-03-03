@@ -1,21 +1,24 @@
 import { useRef, useState } from "react";
 import Temperature from "./Temperature";
 import { API_KEY } from "../utils/constants";
+import Lottie from "lottie-react";
+import animationData from "../assets/Animation - 1709450047163.json";
+import notFoundAnimation from "../assets/not-found1.json"
 
 const Body = () => {
   const [Temp, setTemp] = useState(null);
   const [cityName, setCityName] = useState(null);
-  const [errMsg, setErrMsg] = useState();
-  //  console.log(Data);
+  const [errMsg, setErrMsg] = useState(false);
+  const [loading, setLoading] = useState(false);
   const name = useRef(null);
   const handleClick = () => {
-    // console.log(name.current.value);
+    setErrMsg(false)
+    setLoading(true);
     setCityName(null);
     const city = name.current.value;
     cityApi(city);
   };
   const cityApi = async (city) => {
-    // console.log("cityApi",city);
     const data = await fetch(
       "http://api.openweathermap.org/geo/1.0/direct?q=" +
         city +
@@ -27,23 +30,20 @@ const Body = () => {
       console.log("cityname", json);
       setCityName(json[0].name);
       weatherApi(json);
-      setErrMsg("");
+      setLoading(false);
     } else {
-      setErrMsg("No Data Found");
+      setLoading(false);
+      setErrMsg(true);
     }
   };
   const weatherApi = async (cordinates) => {
     if (cordinates === null) return;
-    // console.log("WeatherAPI",cordinates[0]);
     const lat = cordinates[0].lat;
     const lon = cordinates[0].lon;
-
-    // console.log("lat and lon",lat,lon);
     const data = await fetch(
       `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${API_KEY}`
     );
     const json = await data.json();
-    // console.log("city data",json);
     setTemp(json);
   };
 
@@ -68,8 +68,16 @@ const Body = () => {
         Search
       </button>
 
-      <Temperature cityName={cityName} cityData={Temp} />
-      <p className="font-medium text-xl m-6">{errMsg}</p>
+      {loading ? (
+        <div className="flex items-center justify-center">
+          <Lottie className="w-32" animationData={animationData} />
+        </div>
+      ) : (
+        <Temperature cityName={cityName} cityData={Temp} />
+      )}
+       <div className="flex justify-center">
+       {errMsg ? <Lottie className="w-48 m-5" animationData={notFoundAnimation}/> : ''}
+        </div>
     </div>
   );
 };

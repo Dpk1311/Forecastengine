@@ -10,7 +10,7 @@ const Temperature = ({ cityData, cityName }) => {
         <div className="flex justify-between items-center md:space-x-8 space-x-4">
           <div className="flex flex-col items-center">
             {temp <= 0 ? iceFlakes : temp > 30 ? sunIcon : cloudIcon}
-            <h1 className=" text-2xl md:text-3xl font-semibold">{cityName}</h1>
+            <h1 className=" text-2xl md:text-3xl font-semibold break-all md:break-keep">{cityName}</h1>
           </div>
           <span className="font-bold md:text-8xl text-7xl">{cityData.main.temp}°</span>
         </div>
