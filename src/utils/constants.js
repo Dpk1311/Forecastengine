@@ -1,7 +1,5 @@
 export const API_KEY = "45df0f7652cb67f2ec7fa3f0ba9007a8";
 
-// export const BACKGROUND_IMG_URL = "https://i.pinimg.com/564x/48/93/00/4893007a48c9d8642ec855e0896780aa.jpg"
-
 
 export const sunIcon = (
     <svg

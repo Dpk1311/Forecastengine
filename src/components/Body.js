@@ -5,7 +5,10 @@ import Lottie from "lottie-react";
 import animationData from "../assets/Animation - 1709450047163.json";
 import notFoundAnimation from "../assets/not-found1.json"
 
+
 const Body = () => {
+
+
   const [Temp, setTemp] = useState(null);
   const [cityName, setCityName] = useState(null);
   const [errMsg, setErrMsg] = useState(false);
